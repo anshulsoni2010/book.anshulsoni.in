@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { BookOpen, Code, Users, Twitter, Menu, X, Star, Laptop, Globe, ShoppingCart, Zap, Coffee, Rocket, GraduationCap, CheckCircle } from 'lucide-react';
+import { BookOpen, Code, Users, Twitter, Menu, X, Star, Book, Laptop, Globe, ShoppingCart, Zap, Target, Coffee, Rocket, GraduationCap, Database, CheckCircle } from 'lucide-react';
 import BookCover from "./assets/JS Mastery in 100 Days.png"
 import googlebooksicon from './assets/google-books.png'
 import amazonbooksicon from './assets/amazon-kindle.png'
@@ -225,7 +225,7 @@ export default function LandingPage() {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
     const [isGetYourCopyOpen, setIsGetYourCopyOpen] = useState(false) // New state for Get Your Copy popup
     const [popupClicks, setPopupClicks] = useState(0)
-    const popupRef = useRef(null)
+    const popupRef = useRef<HTMLDivElement | null>(null) // Specify the type for the ref
 
     useEffect(() => {
         setIsVisible(true)
