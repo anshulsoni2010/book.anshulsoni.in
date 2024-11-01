@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { BookOpen, Code, Users, Twitter, Menu, X, Star, Book, Laptop, Globe, ShoppingCart, Zap, Target, Coffee, Rocket, GraduationCap, Database, CheckCircle } from 'lucide-react';
+import { BookOpen, Code, Users, Twitter, Menu, X, Star, Book, Laptop, Globe, ShoppingCart, Zap, Target, Coffee, Rocket, GraduationCap, Database, CheckCircle, Percent, Share2 } from 'lucide-react';
 import BookCover from "./assets/JS Mastery in 100 Days.png"
 import googlebooksicon from './assets/google-books.png'
 import amazonbooksicon from './assets/amazon-kindle.png'
@@ -14,6 +14,8 @@ import author from './assets/anshul.png'
 import js from './assets/js.png'
 import BlurIn from '@/components/ui/blur-in'
 import PBlurIn from '@/components/ui/p-blur'
+import { Toaster } from 'react-hot-toast'
+import Confetti from 'react-confetti'
 // Define support methods
 const supportMethods = [
     {
@@ -233,63 +235,171 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
     </motion.div>
 )
 
+// Updated Discount Popup Component
+const DiscountPopup = ({ onClose, onApplyCoupon }) => {
+  const [selectedCoupon, setSelectedCoupon] = useState(null)
+  const [couponApplied, setCouponApplied] = useState(false)
+  const [shareCount, setShareCount] = useState(0)
+  const [showSharePopup, setShowSharePopup] = useState(false)
+
+  const coupons = [
+    { code: 'JSMASTERY20', discount: '20%' },
+    { code: 'EARLYBIRD15', discount: '15%' }
+  ]
+
+  const handleApplyCoupon = () => {
+    if (selectedCoupon) {
+      onApplyCoupon(selectedCoupon)
+      setCouponApplied(true)
+      setShowSharePopup(true)
+    }
+  }
+
+  const handleShare = (platform) => {
+    setShareCount(prevCount => prevCount + 1)
+    toast.success(`Shared on ${platform}!`)
+    if (shareCount + 1 >= 2) {
+      setShowSharePopup(false)
+    }
+  }
+
+  const handleAvail = () => {
+    if (shareCount >= 2) {
+      window.open('https://play.google.com/store/books', '_blank')
+      onClose()
+    } else {
+      toast.error('Please share with at least 2 friends to avail the discount!')
+    }
+  }
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText('https://jsmastery.com')
+    toast.success('Link copied to clipboard!')
+  }
+
+  return (
+    <motion.div
+      initial={{ scale: 0.9, y: 20 }}
+      animate={{ scale: 1, y: 0 }}
+      exit={{ scale: 0.9, y: 20 }}
+      className="bg-white p-8 rounded-lg shadow-2xl max-w-md w-full relative"
+    >
+      <button
+        className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors"
+        onClick={onClose}
+      >
+        <X className="w-6 h-6" />
+      </button>
+      <h2 className="text-2xl font-bold mb-4 text-center">Special Discount!</h2>
+      <p className="text-gray-600 mb-6 text-center">Choose a coupon code to get an exclusive discount:</p>
+      <div className="space-y-4">
+        {coupons.map((coupon) => (
+          <motion.div
+            key={coupon.code}
+            className={`p-4 border rounded-lg cursor-pointer ${selectedCoupon === coupon ? 'border-orange-500 bg-orange-50' : 'border-gray-200'}`}
+            onClick={() => setSelectedCoupon(coupon)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <p className="font-bold">{coupon.code}</p>
+            <p className="text-sm text-gray-600">Discount: {coupon.discount}</p>
+          </motion.div>
+        ))}
+      </div>
+      <div className="mt-6 flex justify-end space-x-4">
+        <Button variant="outline" onClick={onClose}>Cancel</Button>
+        {!couponApplied ? (
+          <Button onClick={handleApplyCoupon} disabled={!selectedCoupon}>Apply Coupon</Button>
+        ) : (
+          <Button
+            onClick={handleAvail}
+            className={`${shareCount >= 2 ? 'bg-green-500 hover:bg-green-600' : 'bg-gray-400'} text-white`}
+          >
+            AVAIL DISCOUNT
+          </Button>
+        )}
+      </div>
+
+      <AnimatePresence>
+        {showSharePopup && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          >
+            <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full">
+              <h3 className="text-xl font-bold mb-4">Share Your Discount</h3>
+              <p className="mb-4">Share this discount with at least 2 friends to avail it!</p>
+              <div className="flex justify-center space-x-4 mb-4">
+                <Button onClick={() => handleShare('Twitter')} className="bg-blue-400 hover:bg-blue-500 text-white">
+                  <Twitter className="w-5 h-5 mr-2" />
+                  Twitter
+                </Button>
+                <Button onClick={() => handleShare('Facebook')} className="bg-blue-600 hover:bg-blue-700 text-white">
+                  <Share2 className="w-5 h-5 mr-2" />
+                  Facebook
+                </Button>
+              </div>
+              <div className="flex items-center justify-between bg-gray-100 p-2 rounded">
+                <span className="text-sm text-gray-600 truncate">https://jsmastery.com</span>
+                <Button onClick={copyToClipboard} variant="outline" size="sm">
+                  Copy
+                </Button>
+              </div>
+              <p className="mt-4 text-sm text-gray-600 text-center">
+                Shares: {shareCount}/2
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
 export default function LandingPage() {
     const [isVisible, setIsVisible] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isPopupOpen, setIsPopupOpen] = useState(false)
-    const [isGetYourCopyOpen, setIsGetYourCopyOpen] = useState(false) // New state for Get Your Copy popup
-    const [popupClicks, setPopupClicks] = useState(0)
-    const popupRef = useRef<HTMLDivElement | null>(null) // Specify the type for the ref
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+    const [isGetYourCopyOpen, setIsGetYourCopyOpen] = useState(false)
+    const [isDiscountPopupOpen, setIsDiscountPopupOpen] = useState(false)
+    const [showConfetti, setShowConfetti] = useState(false)
+    const [showDiscountIcon, setShowDiscountIcon] = useState(false)
 
     useEffect(() => {
         setIsVisible(true)
-    }, [])
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-                setPopupClicks(prevClicks => prevClicks + 1)
-            } else {
-                setPopupClicks(0)
-            }
-        }
-
-        document.addEventListener('mousedown', handleClickOutside)
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
+        const hasSeenPopup = localStorage.getItem('hasSeenPopup')
+        if (!hasSeenPopup) {
+            const timer = setTimeout(() => setIsDiscountPopupOpen(true), 5000)
+            return () => clearTimeout(timer)
+        } else {
+            const activityTimeout = setTimeout(() => {
+                setIsDiscountPopupOpen(true)
+            }, 10000); // Show after 10 seconds of user activity
+            return () => clearTimeout(activityTimeout);
         }
     }, [])
 
-    useEffect(() => {
-        if (popupClicks >= 2) {
-            setIsPopupOpen(false)
-            setPopupClicks(0)
-        }
-    }, [popupClicks])
-
-    const staggerChildren = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
+    const handleApplyCoupon = (coupon) => {
+        toast.success(`Coupon ${coupon.code} applied! You got a ${coupon.discount} discount.`, {
+            duration: 5000,
+            position: 'top-center',
+        })
+        setShowConfetti(true)
+        setTimeout(() => setShowConfetti(false), 5000)
+        setShowDiscountIcon(true)
+        localStorage.setItem('hasSeenPopup', 'true')
     }
 
-    const pulseAnimation = {
-        scale: [1, 1.05, 1],
-        transition: {
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-        }
+    const handleDiscountIconClick = () => {
+        setIsDiscountPopupOpen(true)
     }
 
     return (
         <div className="relative flex flex-col min-h-screen bg-gradient-to-br from-orange-50 to-white text-gray-800 overflow-hidden font-sans bg-center bg-cover">
+            <Toaster />
+            {showConfetti && <Confetti />}
             <RotatingBackground />
             <FloatingParticles />
 
@@ -771,6 +881,43 @@ className="text-xl mb-8 text-gray-600"
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <AnimatePresence>
+                {isDiscountPopupOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                        onClick={(e) => {
+                            if (e.target === e.currentTarget) {
+                                setIsDiscountPopupOpen(false)
+                            }
+                        }}
+                    >
+                        <DiscountPopup
+                            onClose={() => setIsDiscountPopupOpen(false)}
+                            onApplyCoupon={handleApplyCoupon}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {showDiscountIcon && (
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="fixed bottom-4 right-4 z-50"
+                >
+                    <Button
+                        onClick={handleDiscountIconClick}
+                        className="bg-orange-500 hover:bg-orange-600 text-white rounded-full p-3"
+                    >
+                        <Percent className="w-6 h-6" />
+                    </Button>
+                </motion.div>
+            )}
         </div>
     )
 }
