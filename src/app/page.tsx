@@ -12,7 +12,8 @@ import googlebooksicon from './assets/google-books.png'
 import amazonbooksicon from './assets/amazon-kindle.png'
 import author from './assets/anshul.png'
 import js from './assets/js.png'
-
+import BlurIn from '@/components/ui/blur-in'
+import PBlurIn from '@/components/ui/p-blur'
 // Define support methods
 const supportMethods = [
     {
@@ -126,16 +127,28 @@ const SupportPopup = ({ onClose }: { onClose: () => void }) => (
     >
         <h2 className="text-3xl font-bold mb-4 text-center">Support the Book</h2>
 
-        <div className='border border-gray-200 rounded-lg p-4 w-fit'>
+        <div className='border border-gray-200 rounded-lg p-4 mx-auto my-4 w-fit'>
             <p className=" text-xl font-bold text-gray-700 mb-4"> Some useful links :</p>
-            <ul className="space-y-2">
-                <li><a href="https://x.com/anshulsoni2010" className="hover:text-orange-500 text-blue-600 transition-colors">X (Formerly Twitter)</a></li>
-                <li><a href="https://Instagram.com/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-600">Instagram</a></li>
-                <li><a href="https://buymeacoffee.com/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-600">Buy Me A Coffee</a></li>
-                <li><a href="https://linktr.ee/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-600">Anshul Linktree</a></li>
-                <li><a href="https://linktr/codeinblogscommunity" className="hover:text-orange-500 transition-colors text-blue-600">CodeINBlogs Linktree</a></li>
-                <li><a href="http://book.anshulsoni.in" className="hover:text-orange-500 transition-colors text-blue-600">JavaScript Mastery in 100 Days Page</a></li>
-            </ul>
+            <div className=" grid md:grid-cols-2 gap-8">
+                <span className="flex items-center">
+                    <Globe className="text-xl text-orange-700 mx-2" />
+                    <a href="https://x.com/anshulsoni2010" className="hover:text-orange-500 text-blue-600 transition-colors">X (Formerly Twitter)</a></span>
+                <span className="flex items-center">
+                    <Globe className="text-xl text-orange-700 mx-2" />
+                    <a href="https://Instagram.com/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-600">Instagram</a></span>
+                <span className="flex items-center">
+                    <Globe className="text-xl text-orange-700 mx-2" />
+                    <a href="https://buymeacoffee.com/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-600">Buy Me A Coffee</a></span>
+                <span className="flex items-center">
+                    <Globe className="text-xl text-orange-700 mx-2" />
+                    <a href="https://linktr.ee/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-600">Anshul Linktree</a></span>
+                <span className="flex items-center">
+                    <Globe className="text-xl text-orange-700 mx-2" />
+                    <a href="https://linktr/codeinblogscommunity" className="hover:text-orange-500 transition-colors text-blue-600">CodeINBlogs Linktree</a></span>
+                <span className="flex items-center">
+                    <Globe className="text-xl text-orange-700 mx-2" />
+                    <a href="http://book.anshulsoni.in" className="hover:text-orange-500 transition-colors text-blue-600">JavaScript Mastery in 100 Days Page</a></span>
+            </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {supportMethods.map((method, index) => (
@@ -170,7 +183,7 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
     >
         <h2 className="text-3xl font-bold mb-4 text-center">Choose a Platform</h2>
         <div className="grid grid-cols-2 gap-4 mb-6">
-            <Card className="hover:shadow-lg transition-shadow duration-300">
+            <Card className="hover:shadow-lg hover:shadow-blue-300 transition-shadow shadow-blue-500 bg-blue-50 duration-300">
                 <CardContent className="flex flex-col items-center p-4">
                     <Image
                         src={googlebooksicon}
@@ -179,7 +192,7 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                         height={80}
                         className="mb-2"
                     />
-                    <h3 className="mb-2">Google Play Books</h3>
+                    <h3 className="mb-2 text-center font-semibold" >Google Play Books</h3>
                     <Button
                         onClick={() => window.open('https://play.google.com/store/books', '_blank')}
                         className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2"
@@ -188,8 +201,9 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                     </Button>
                 </CardContent>
             </Card>
-            <Card className="hover:shadow-lg transition-shadow duration-300">
+            <Card className="hover:shadow-lg hover:shadow-orange-300 transition-shadow shadow-orange-500 bg-orange-50 duration-300">
                 <CardContent className="flex flex-col items-center p-4">
+                    <span className="w-fit px-6 bg-orange-600 text-white py-2 text-center rounded-md font-bold font-geist">Coming Soon</span>
                     <Image
                         src={amazonbooksicon}
                         alt="Amazon Kindle Store"
@@ -197,18 +211,18 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                         height={80}
                         className="mb-2"
                     />
-                    <h3 className="mb-2">Amazon Kindle Store</h3>
-                    <Button
+                    <h3 className="mb-2 text-center font-semibold">Amazon Kindle Store</h3>
+                    {/* <Button
                         onClick={() => window.open('https://www.amazon.com/Kindle-eBooks', '_blank')}
                         className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2"
                     >
                         Buy Now
-                    </Button>
+                    </Button> */}
                 </CardContent>
             </Card>
         </div>
         <p className="text-center text-gray-600 text-sm">
-            You can purchase from any platform that suits you best. Both platforms provide the same content and features.
+            You can purchase from any platform that suits you best. Because, on both platforms prices are same.
         </p>
         <button
             className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors"
@@ -226,6 +240,8 @@ export default function LandingPage() {
     const [isGetYourCopyOpen, setIsGetYourCopyOpen] = useState(false) // New state for Get Your Copy popup
     const [popupClicks, setPopupClicks] = useState(0)
     const popupRef = useRef<HTMLDivElement | null>(null) // Specify the type for the ref
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
         setIsVisible(true)
@@ -278,10 +294,9 @@ export default function LandingPage() {
             <FloatingParticles />
 
             <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-                <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div className="container  px-12  mx-auto  py-4 flex justify-between items-center">
                     <Link href="/" className="flex items-center space-x-2">
-                        <BookOpen className="w-8 h-8 text-orange-600" />
-                        <span className="font-bold text-xl">JS Mastery</span>
+                        <BookOpen className="w-12 h-12 text-orange-600" />
                     </Link>
                     <nav className="hidden md:flex space-x-6">
                         {['About', 'Content', 'Author', 'Reviews'].map((item) => (
@@ -294,6 +309,9 @@ export default function LandingPage() {
                             </Link>
                         ))}
                     </nav>
+
+
+
                     <Button
                         size="lg"
                         className="bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:from-orange-600 hover:to-pink-600 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg" // Added shadow and scale effect
@@ -362,31 +380,47 @@ export default function LandingPage() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8 }}
                             >
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 text-transparent bg-clip-text">
-                                    JavaScript Mastery in 100 Days
-                                </h1>
-                                <p className="text-xl mb-8 text-gray-600">
-                                    Master the fundamentals of JavaScript through engaging lessons, practical exercises, and real-world projects designed for aspiring developers.
-                                </p>
-                                <div className="space-x-4">
+
+                                <BlurIn
+                                    word="JavaScript Mastery in 100 Days"
+                                    className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 text-transparent bg-clip-text"
+
+                                />
+
+
+
+
+<PBlurIn
+word="Master the fundamentals of JavaScript through engaging lessons, practical exercises, and real-world projects designed for aspiring developers."
+className="text-xl mb-8 text-gray-600"
+/>
+                                <motion.div
+                                    className="space-y-4 md:space-y-0 md:space-x-4"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.4 }}
+                                    viewport={{ once: true }}
+                                >
                                     <Button
                                         size="lg"
-                                        className="bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:from-orange-600 hover:to-pink-600 transition-all duration-300 ease-in-out transform hover:scale-105"
+                                        variant="outline"
+                                        className="bg-white text-orange-500 hover:bg-orange-100 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
                                         onClick={() => setIsGetYourCopyOpen(true)} // Open Get Your Copy popup
                                     >
                                         <ShoppingCart className="w-5 h-5 mr-2" />
-                                        Get Your Copy
+                                        Get Your Copy Now
                                     </Button>
                                     <Button
                                         size="lg"
                                         variant="outline"
-                                        className="border-orange-500 text-orange-500 hover:bg-orange-50 transition-all duration-300 ease-in-out transform hover:scale-105"
+                                        className="border-white  bg-orange-100 transition-all duration-300 ease-in-out transform hover:scale-110 hover:text-orange-500 text-orange-500"
                                         onClick={() => setIsPopupOpen(true)} // Open Support popup
                                     >
                                         <BookOpen className="w-5 h-5 mr-2" />
                                         Support Me
                                     </Button>
-                                </div>
+                                </motion.div>
+
                             </motion.div>
                             <motion.div
                                 className="md:w-1/2"
@@ -676,6 +710,25 @@ export default function LandingPage() {
                                 </div>
                                 <p className="text-gray-600">Community Support</p>
                             </motion.div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="newsletter" className="py-20 bg-white">
+                    <div className="container mx-auto px-4 text-center">
+                        <h2 className="text-3xl font-bold mb-6">Subscribe to Our Newsletter</h2>
+                        <p className="text-gray-600 mb-4">Stay updated with the latest news and offers!</p>
+                        <div className="flex justify-center">
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                className="border border-gray-300 rounded-l-md p-2 w-64"
+                            />
+                            <button
+                                className="bg-orange-500 text-white rounded-r-md p-2 hover:bg-orange-600 transition duration-300"
+                            >
+                                Subscribe
+                            </button>
                         </div>
                     </div>
                 </section>
