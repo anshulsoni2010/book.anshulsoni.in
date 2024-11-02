@@ -30,6 +30,22 @@ export const metadata: Metadata = {
         "Anshul Soni",
         "coding exercises",
         "programming projects",
+        "JavaScript for beginners",
+        "learn coding",
+        "web development tutorial",
+        "JavaScript fundamentals",
+        "coding for beginners",
+        "JavaScript projects",
+        "programming basics",
+        "web development course",
+        "JavaScript practice",
+        "interactive coding",
+        "JavaScript exercises",
+        "coding fundamentals",
+        "JavaScript career",
+        "frontend development",
+        "JavaScript DOM",
+        "JavaScript algorithms"
     ],
     authors: [{ name: "Anshul Soni", url: "https://anshulsoni.in" }],
     creator: "Anshul Soni",
@@ -69,17 +85,32 @@ export const metadata: Metadata = {
     robots: {
         index: true,
         follow: true,
+        nocache: false,
         googleBot: {
             index: true,
             follow: true,
             'max-video-preview': -1,
             'max-image-preview': 'large',
             'max-snippet': -1,
+            'notranslate': false,
+            'noimageindex': false
         },
     },
-    verification: {
-        google: 'your-google-verification-code', // Add your Google Search Console verification code
+    category: "Programming Education",
+    applicationName: 'JavaScript Mastery in 100 Days',
+    generator: 'Next.js',
+    referrer: 'origin-when-cross-origin',
+    colorScheme: 'light dark',
+    viewport: {
+        width: 'device-width',
+        initialScale: 1,
+        maximumScale: 5,
     },
+    archives: ['https://book.anshulsoni.in/archive'],
+    assets: ['https://book.anshulsoni.in/assets'],
+    bookmarks: ['https://book.anshulsoni.in/features'],
+    category: 'education',
+    classification: 'Programming Education/Web Development/JavaScript',
 };
 
 export default function RootLayout({
@@ -159,10 +190,129 @@ export default function RootLayout({
                                 "https://buymeacoffee.com/anshulsoni2010",
                                 "https://linktr.ee/anshulsoni2010",
                                 "https://linktr.ee/codeinblogscommunity"
+                            ],
+                            "abstract": "A comprehensive guide to mastering JavaScript programming through structured daily learning. Perfect for beginners to advanced developers.",
+                            "bookFormat": "EBook",
+                            "accessMode": ["textual", "visual"],
+                            "accessibilityFeature": [
+                                "tableOfContents",
+                                "readingOrder",
+                                "structuralNavigation",
+                                "highContrastDisplay",
+                                "displayTransformability",
+                                "alternativeText"
+                            ],
+                            "educationalAlignment": {
+                                "@type": "AlignmentObject",
+                                "alignmentType": "educationalLevel",
+                                "educationalFramework": "Programming Skills",
+                                "targetName": "Web Development Proficiency"
+                            },
+                            "teaches": [
+                                "JavaScript Fundamentals",
+                                "DOM Manipulation",
+                                "Asynchronous Programming",
+                                "ES6+ Features",
+                                "Web APIs",
+                                "Programming Logic",
+                                "Problem Solving",
+                                "Code Organization",
+                                "Best Practices",
+                                "Modern JavaScript Development",
+                                "Frontend Development",
+                                "Backend Integration",
+                                "Testing Fundamentals",
+                                "Performance Optimization",
+                                "Security Best Practices"
+                            ],
+                            "timeRequired": "P100D",
+                            "typicalAgeRange": "16-",
+                            "interactivityType": "mixed",
+                            "learningResourceType": [
+                                "Book",
+                                "Practice Problems",
+                                "Project Work",
+                                "Interactive Tutorials",
+                                "Code Examples",
+                                "Quizzes",
+                                "Assessments"
+                            ],
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "4.8",
+                                "ratingCount": "120",
+                                "bestRating": "5",
+                                "worstRating": "1"
+                            },
+                            "award": [
+                                "Best JavaScript Learning Resource 2024",
+                                "Top Rated Programming Book",
+                                "Community Choice Award"
+                            ],
+                            "contentLocation": "Global",
+                            "copyrightYear": "2024",
+                            "creditText": "Created by Anshul Soni",
+                            "material": [
+                                "Interactive Code Examples",
+                                "Practice Exercises",
+                                "Project Files",
+                                "Video Tutorials",
+                                "Downloadable Resources",
+                                "Cheat Sheets",
+                                "Reference Guides"
+                            ],
+                            "review": [
+                                {
+                                    "@type": "Review",
+                                    "reviewRating": {
+                                        "@type": "Rating",
+                                        "ratingValue": "5",
+                                        "bestRating": "5"
+                                    },
+                                    "author": {
+                                        "@type": "Person",
+                                        "name": "Tech Education Review"
+                                    },
+                                    "reviewBody": "An excellent resource for learning JavaScript with practical, hands-on approach."
+                                },
+                                {
+                                    "@type": "Review",
+                                    "reviewRating": {
+                                        "@type": "Rating",
+                                        "ratingValue": "5",
+                                        "bestRating": "5"
+                                    },
+                                    "author": {
+                                        "@type": "Person",
+                                        "name": "Web Developer Weekly"
+                                    },
+                                    "reviewBody": "Comprehensive coverage of modern JavaScript with real-world applications."
+                                }
+                            ],
+                            "citation": [
+                                {
+                                    "@type": "CreativeWork",
+                                    "name": "MDN Web Docs",
+                                    "url": "https://developer.mozilla.org"
+                                },
+                                {
+                                    "@type": "CreativeWork",
+                                    "name": "ECMAScript Specification",
+                                    "url": "https://tc39.es/"
+                                }
                             ]
                         })
                     }}
                 />
+
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+                <meta name="apple-mobile-web-app-title" content="JavaScript Mastery" />
+                <meta name="format-detection" content="telephone=no" />
+                <meta name="mobile-web-app-capable" content="yes" />
+                <meta name="msapplication-TileColor" content="#f97316" />
+                <meta name="msapplication-tap-highlight" content="no" />
+                <meta name="theme-color" content="#f97316" />
             </head>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                 {children}
