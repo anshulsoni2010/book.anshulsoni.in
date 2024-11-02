@@ -19,43 +19,43 @@ const supportMethods = [
     {
         title: "Share on Social Media",
         description: "Spread the word by posting about the book on platforms like X (Twitter), LinkedIn, or Instagram. (also mail me so that I won't miss your post - hi@anshulsoni.in or anshulsoni2022@gmail.com ) ",
-        icon: <Twitter className="w-8 h-8 text-blue-500" />
+        icon: <Twitter className="w-8 h-8 text-blue-600" />
     },
     {
         title: "Write a Review",
         description: "Honest reviews help others make a choice. Leave a review on Amazon or Google Books.",
-        icon: <Star className="w-8 h-8 text-yellow-500" />
+        icon: <Star className="w-8 h-8 text-yellow-600" />
     },
     {
         title: "Buy Me a Coffee",
         description: "Every bit of support goes a long way! Show appreciation with a small gesture.",
-        icon: <Coffee className="w-8 h-8 text-brown-500" />
+        icon: <Coffee className="w-8 h-8 text-brown-600" />
     },
     {
         title: "Join CodeINBlogs Community",
         description: "Connect with other readers working on projects and sharing progress.",
-        icon: <Users className="w-8 h-8 text-green-500" />
+        icon: <Users className="w-8 h-8 text-green-600" />
     },
     {
         title: "Build and Share a Project",
         description: "Take any project from the book, build it, and share it online!",
-        icon: <Laptop className="w-8 h-8 text-gray-500" />
+        icon: <Laptop className="w-8 h-8 text-gray-600" />
     },
     {
         title: "Recommend the Book",
         description: "Let someone know about the book. A small step that could make a big difference.",
-        icon: <BookOpen className="w-8 h-8 text-orange-500" />
+        icon: <BookOpen className="w-8 h-8 text-orange-600" />
     },
     {
         title: "Be Featured on My Socials",
         description: "Share your journey with the book, and I’d love to feature you on my social media.",
-        icon: <Globe className="w-8 h-8 text-blue-400" />
+        icon: <Globe className="w-8 h-8 text-blue-500" />
     },
 ];
 
 const RotatingBackground = () => (
     <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-200 to-pink-200 animate-gradient-rotate" />
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-300 to-pink-300 animate-gradient-rotate" />
         <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:20px_20px]" />
     </div>
 )
@@ -65,7 +65,7 @@ const FloatingParticles = () => (
         {[...Array(50)].map((_, i) => (
             <motion.div
                 key={i}
-                className="absolute w-1 h-1 bg-orange-400 rounded-full"
+                className="absolute w-1 h-1 bg-orange-500 rounded-full"
                 initial={{ x: Math.random() * 100 + '%', y: Math.random() * 100 + '%' }}
                 animate={{
                     x: [Math.random() * 100 + '%', Math.random() * 100 + '%'],
@@ -108,11 +108,11 @@ const AnimatedCounter = ({ target, duration = 2000 }: { target: number; duration
 const FeatureCard = ({ icon: Icon, title, description }: { icon: React.ElementType; title: string; description: string }) => (
     <Card className="h-full hover:shadow-lg transition-shadow duration-300">
         <CardContent className="flex flex-col items-center p-6 text-center h-full">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 flex items-center justify-center mb-4">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 flex items-center justify-center mb-4">
                 <Icon className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
-            <p className="text-gray-600">{description}</p>
+            <p className="text-gray-700">{description}</p>
         </CardContent>
     </Card>
 )
@@ -128,26 +128,26 @@ const SupportPopup = ({ onClose }: { onClose: () => void }) => (
         <h2 className="text-3xl font-bold mb-4 text-center">Support the Book</h2>
 
         <div className='border border-gray-200 rounded-lg p-4 mx-auto my-4 w-fit'>
-            <p className=" text-xl font-bold text-gray-700 mb-4"> Some useful links :</p>
+            <p className=" text-xl font-bold text-gray-800 mb-4"> Some useful links :</p>
             <div className=" grid md:grid-cols-2 gap-8">
                 <span className="flex items-center">
                     <Globe className="text-xl text-orange-700 mx-2" />
-                    <a href="https://x.com/anshulsoni2010" className="hover:text-orange-500 text-blue-600 transition-colors">X (Formerly Twitter)</a></span>
+                    <a href="https://x.com/anshulsoni2010" className="hover:text-orange-500 text-blue-700 transition-colors">X (Formerly Twitter)</a></span>
                 <span className="flex items-center">
                     <Globe className="text-xl text-orange-700 mx-2" />
-                    <a href="https://Instagram.com/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-600">Instagram</a></span>
+                    <a href="https://Instagram.com/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-700">Instagram</a></span>
                 <span className="flex items-center">
                     <Globe className="text-xl text-orange-700 mx-2" />
-                    <a href="https://buymeacoffee.com/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-600">Buy Me A Coffee</a></span>
+                    <a href="https://buymeacoffee.com/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-700">Buy Me A Coffee</a></span>
                 <span className="flex items-center">
                     <Globe className="text-xl text-orange-700 mx-2" />
-                    <a href="https://linktr.ee/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-600">Anshul Linktree</a></span>
+                    <a href="https://linktr.ee/anshulsoni2010" className="hover:text-orange-500 transition-colors text-blue-700">Anshul Linktree</a></span>
                 <span className="flex items-center">
                     <Globe className="text-xl text-orange-700 mx-2" />
-                    <a href="https://linktr/codeinblogscommunity" className="hover:text-orange-500 transition-colors text-blue-600">CodeINBlogs Linktree</a></span>
+                    <a href="https://linktr/codeinblogscommunity" className="hover:text-orange-500 transition-colors text-blue-700">CodeINBlogs Linktree</a></span>
                 <span className="flex items-center">
                     <Globe className="text-xl text-orange-700 mx-2" />
-                    <a href="http://book.anshulsoni.in" className="hover:text-orange-500 transition-colors text-blue-600">JavaScript Mastery in 100 Days Page</a></span>
+                    <a href="http://book.anshulsoni.in" className="hover:text-orange-500 transition-colors text-blue-700">JavaScript Mastery in 100 Days Page</a></span>
             </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -157,15 +157,15 @@ const SupportPopup = ({ onClose }: { onClose: () => void }) => (
                         {method.icon}
                         <h3 className="text-xl font-semibold ml-2">{method.title}</h3>
                     </div>
-                    <p className="text-gray-600">{method.description}</p>
+                    <p className="text-gray-700">{method.description}</p>
                 </div>
             ))}
         </div>
-        <p className="text-gray-600 text-sm mt-4">
+        <p className="text-gray-700 text-sm mt-4">
             Your support can make a big difference!
         </p>
         <button
-            className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors"
+            className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 transition-colors"
             onClick={onClose}
         >
             <X className="w-6 h-6" />
@@ -182,11 +182,11 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
         className="bg-white p-8 rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto relative"
     >
         <h2 className="text-3xl font-bold mb-4 text-center">Choose Your Platform</h2>
-        <p className="text-center text-gray-600 mb-6">Google Books is our recommended platform for the best reading experience!</p>
+        <p className="text-center text-gray-700 mb-6">Google Books is our recommended platform for the best reading experience!</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <Card className="hover:shadow-lg hover:shadow-blue-300 transition-shadow shadow-blue-500 bg-blue-50 duration-300">
                 <CardContent className="flex flex-col items-center p-4">
-                    <div className="bg-blue-100 px-3 py-1 rounded-full text-blue-600 text-sm font-medium mb-2">Recommended</div>
+                    <div className="bg-blue-100 px-3 py-1 rounded-full text-blue-700 text-sm font-medium mb-2">Recommended</div>
                     <Image
                         src={googlebooksicon}
                         alt="Google Play Books"
@@ -198,17 +198,17 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                     <div className="flex flex-col gap-2 w-full">
                         <Button
                             onClick={() => window.open('https://play.google.com/store/books', '_blank')}
-                            className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2"
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2"
                         >
                             Buy Now
                         </Button>
-                        <p className="text-xs text-blue-600 text-center">Best reading experience across all devices</p>
+                        <p className="text-xs text-blue-700 text-center">Best reading experience across all devices</p>
                     </div>
                 </CardContent>
             </Card>
             <Card className="hover:shadow-lg hover:shadow-orange-300 transition-shadow shadow-orange-500 bg-orange-50 duration-300">
                 <CardContent className="flex flex-col items-center p-4">
-                    <div className="bg-orange-100 px-3 py-1 rounded-full text-orange-600 text-sm font-medium mb-2">Available on Kindle</div>
+                    <div className="bg-orange-100 px-3 py-1 rounded-full text-orange-700 text-sm font-medium mb-2">Available on Kindle</div>
                     <Image
                         src={amazonbooksicon}
                         alt="Amazon Kindle Store"
@@ -220,11 +220,11 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                     <div className="flex flex-col gap-2 w-full">
                         <Button
                             onClick={() => window.open('https://www.amazon.com/Kindle-eBooks', '_blank')}
-                            className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2"
+                            className="w-full bg-orange-600 hover:bg-orange-700 text-white py-2"
                         >
                             Buy Now
                         </Button>
-                        <p className="text-xs text-orange-600 text-center">Read on your favorite Kindle device</p>
+                        <p className="text-xs text-orange-700 text-center">Read on your favorite Kindle device</p>
                     </div>
                 </CardContent>
             </Card>
@@ -232,7 +232,7 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
         <div className="grid md:grid-cols-2 gap-4">
             <div className="mt-6 p-4 bg-gray-50 rounded-lg">
                 <h3 className="text-lg font-semibold mb-2 text-center">Why Choose Google Books?</h3>
-                <ul className="text-sm text-gray-600 space-y-2">
+                <ul className="text-sm text-gray-700 space-y-2">
                     <li className="flex items-center">
                         <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
                         Seamless synchronization across all devices
@@ -249,7 +249,7 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
             </div>
             <div className="mt-6 p-4 bg-gray-50 rounded-lg">
                 <h3 className="text-lg font-semibold mb-2 text-center">Why Choose Amazon Kindle?</h3>
-                <ul className="text-sm text-gray-600 space-y-2">
+                <ul className="text-sm text-gray-700 space-y-2">
                     <li className="flex items-center">
                         <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
                         Read on dedicated Kindle e-readers
@@ -266,7 +266,7 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
             </div>
         </div>
         <button
-            className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors"
+            className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 transition-colors"
             onClick={onClose}
         >
             <X className="w-6 h-6" />
@@ -385,11 +385,9 @@ export default function LandingPage() {
                         ))}
                     </nav>
 
-
-
                     <Button
                         size="lg"
-                        className="bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:from-orange-600 hover:to-pink-600 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg" // Added shadow and scale effect
+                        className="bg-gradient-to-r from-orange-600 to-pink-600 text-white hover:from-orange-700 hover:to-pink-700 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg" // Added shadow and scale effect
                         onClick={() => setIsGetYourCopyOpen(true)} // Open Get Your Copy popup
                     >
                         <ShoppingCart className="w-5 h-5 mr-2" />
@@ -431,7 +429,7 @@ export default function LandingPage() {
                             ))}
                             <Button
                                 size="lg"
-                                className="bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:from-orange-600 hover:to-pink-600 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg" // Added shadow and scale effect
+                                className="bg-gradient-to-r from-orange-600 to-pink-600 text-white hover:from-orange-700 hover:to-pink-700 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg" // Added shadow and scale effect
                                 onClick={() => {
                                     setIsGetYourCopyOpen(true) // Open Get Your Copy popup
                                     setIsMenuOpen(false)
@@ -462,12 +460,9 @@ export default function LandingPage() {
 
                                 />
 
-
-
-
                                 <PBlurIn
                                     word="Master the fundamentals of JavaScript through engaging lessons, practical exercises, and real-world projects designed for aspiring developers."
-                                    className="text-xl mb-8 text-gray-600"
+                                    className="text-xl mb-8 text-gray-700"
                                 />
                                 <motion.div
                                     className="space-y-4 md:space-y-0 md:space-x-4"
@@ -479,7 +474,7 @@ export default function LandingPage() {
                                     <Button
                                         size="lg"
                                         variant="outline"
-                                        className="bg-white text-orange-500 hover:bg-orange-100 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                                        className="bg-white text-orange-600 hover:bg-orange-100 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
                                         onClick={() => setIsGetYourCopyOpen(true)} // Open Get Your Copy popup
                                     >
                                         <ShoppingCart className="w-5 h-5 mr-2" />
@@ -488,7 +483,7 @@ export default function LandingPage() {
                                     <Button
                                         size="lg"
                                         variant="outline"
-                                        className="border-white  bg-orange-100 transition-all duration-300 ease-in-out transform hover:scale-110 hover:text-orange-500 text-orange-500"
+                                        className="border-white  bg-orange-200 transition-all duration-300 ease-in-out transform hover:scale-110 hover:text-orange-600 text-orange-600"
                                         onClick={() => setIsPopupOpen(true)} // Open Support popup
                                     >
                                         <BookOpen className="w-5 h-5 mr-2" />
@@ -549,13 +544,13 @@ export default function LandingPage() {
                                 <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 text-transparent bg-clip-text">
                                     About the Book
                                 </h2>
-                                <p className="text-gray-600 mb-6">
+                                <p className="text-gray-700 mb-6">
                                     "JavaScript Mastery in 100 Days" is your comprehensive guide to becoming a proficient JavaScript developer. This book is designed to take you from a beginner to an advanced level, covering everything from basic syntax to complex concepts like asynchronous programming and modern ES6+ features.
                                 </p>
-                                <p className="text-gray-600 mb-6">
+                                <p className="text-gray-700 mb-6">
                                     With a perfect blend of theory and practice, each day brings new challenges and hands-on projects that reinforce your learning. By the end of this 100-day journey, you'll have the skills and confidence to build robust, efficient, and modern web applications.
                                 </p>
-                                <p className="text-gray-600">
+                                <p className="text-gray-700">
                                     Whether you're a complete beginner or looking to solidify your JavaScript knowledge, this book provides a structured path to mastery, ensuring you're job-ready and capable of tackling real-world development challenges.
                                 </p>
                             </motion.div>
@@ -612,7 +607,7 @@ export default function LandingPage() {
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                 >
-                                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 flex items-center justify-center">
+                                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 flex items-center justify-center">
                                         <item.icon className="w-6 h-6 text-white" />
                                     </div>
                                     <p className="text-gray-700">{item.text}</p>
@@ -651,10 +646,8 @@ export default function LandingPage() {
                                 className="md:w-2/3"
                             >
                                 <h3 className="text-2xl font-semibold mb-4">Anshul Soni</h3>
-                                <p className="text-gray-600 mb-4">
+                                <p className="text-gray-700 mb-4">
                                     Anshul Soni, a 14-year-old full-stack developer and UI/UX designer, is the founder of CodeINBlogs, one of the fastest-growing communities for developers. As an author of JavaScript Mastery in 100 Days, he brings a wealth of coding expertise to aspiring developers. Anshul is also an organizer of hackathons, a speaker at DevFest 2023, and has been featured in various news outlets for his work and contributions in tech.
-
-
                                 </p>
                                 <div className="flex items-center space-x-4">
                                     <Link href="https://twitter.com/anshulsoni2010" target="_blank" className="text-gray-600 hover:text-gray-800 transition-colors">
@@ -672,7 +665,7 @@ export default function LandingPage() {
                     </div>
                 </section>
 
-                <section id="cta" className="py-20 bg-gradient-to-r from-orange-500 to-pink-500 relative overflow-hidden">
+                <section id="cta" className="py-20 bg-gradient-to-r from-orange-600 to-pink-600 relative overflow-hidden">
                     <div className="absolute inset-0 bg-black opacity-10"></div>
                     <div className="container mx-auto px-4 text-center relative z-10">
                         <motion.div
@@ -715,7 +708,7 @@ export default function LandingPage() {
                         >
                             <Button
                                 size="lg"
-                                className="bg-white text-orange-500 hover:bg-orange-100 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                                className="bg-white text-orange-600 hover:bg-orange-100 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
                                 onClick={() => setIsGetYourCopyOpen(true)} // Open Get Your Copy popup
                             >
                                 <ShoppingCart className="w-5 h-5 mr-2" />
@@ -724,7 +717,7 @@ export default function LandingPage() {
                             <Button
                                 size="lg"
                                 variant="outline"
-                                className="border-white  hover:bg-white hover:text-orange-500 transition-all duration-300 ease-in-out transform hover:scale-105"
+                                className="border-white  hover:bg-white hover:text-orange-600 transition-all duration-300 ease-in-out transform hover:scale-105"
                                 onClick={() => setIsPopupOpen(true)} // Open Support popup
                             >
                                 <BookOpen className="w-5 h-5 mr-2" />
@@ -758,10 +751,10 @@ export default function LandingPage() {
                                 transition={{ duration: 0.5 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="text-4xl font-bold text-orange-500 mb-2">
+                                <div className="text-4xl font-bold text-orange-600 mb-2">
                                     <AnimatedCounter target={100} duration={2000} />+
                                 </div>
-                                <p className="text-gray-600">Coding Exercises</p>
+                                <p className="text-gray-700">Coding Exercises</p>
                             </motion.div>
                             <motion.div
                                 className="text-center"
@@ -770,10 +763,10 @@ export default function LandingPage() {
                                 transition={{ duration: 0.5, delay: 0.2 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="text-4xl font-bold text-pink-500 mb-2">
+                                <div className="text-4xl font-bold text-pink-600 mb-2">
                                     <AnimatedCounter target={15} duration={2000} />+
                                 </div>
-                                <p className="text-gray-600">Real-world Projects</p>
+                                <p className="text-gray-700">Real-world Projects</p>
                             </motion.div>
                             <motion.div
                                 className="text-center"
@@ -782,10 +775,10 @@ export default function LandingPage() {
                                 transition={{ duration: 0.5, delay: 0.4 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="text-4xl font-bold text-orange-500 mb-2">
+                                <div className="text-4xl font-bold text-orange-600 mb-2">
                                     <AnimatedCounter target={24} duration={2000} />/7
                                 </div>
-                                <p className="text-gray-600">Community Support</p>
+                                <p className="text-gray-700">Community Support</p>
                             </motion.div>
                         </div>
                     </div>
@@ -794,7 +787,7 @@ export default function LandingPage() {
                 <section id="newsletter" className="py-20 bg-white">
                     <div className="container mx-auto px-4 text-center">
                         <h2 className="text-3xl font-bold mb-6">Subscribe to Our Newsletter</h2>
-                        <p className="text-gray-600 mb-4">Stay updated with the latest news and offers!</p>
+                        <p className="text-gray-700 mb-4">Stay updated with the latest news and offers!</p>
                         <div className="flex justify-center">
                             <form action="https://formcarry.com/s/0mtR_Q253s_"
                                 method="POST"
@@ -816,7 +809,7 @@ export default function LandingPage() {
                                     className="border border-gray-300 rounded-md md:rounded-none p-2 w-64"
                                 />
                                 <button
-                                    className="bg-orange-500 text-white rounded-md md:rounded-l-none p-2 hover:bg-orange-600 transition duration-300 w-64 md:w-auto"
+                                    className="bg-orange-600 text-white rounded-md md:rounded-l-none p-2 hover:bg-orange-700 transition duration-300 w-64 md:w-auto"
                                     type="submit"
                                 >
                                     Subscribe
@@ -867,7 +860,7 @@ export default function LandingPage() {
 
             {/* Discount Icon */}
             <button
-                className="fixed bottom-4 right-4 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition"
+                className="fixed bottom-4 right-4 bg-orange-600 text-white rounded-full p-3 shadow-lg hover:bg-orange-700 transition"
                 onClick={() => setIsDiscountPopupOpen(true)} // Open popup on click
             >
                 <ShoppingCart className="w-6 h-6" />
