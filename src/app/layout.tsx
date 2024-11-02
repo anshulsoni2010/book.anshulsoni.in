@@ -106,10 +106,7 @@ export const metadata: Metadata = {
         initialScale: 1,
         maximumScale: 5,
     },
-    archives: ['https://book.anshulsoni.in/archive'],
-    assets: ['https://book.anshulsoni.in/assets'],
-    bookmarks: ['https://book.anshulsoni.in/features'],
-    category: 'education',
+
     classification: 'Programming Education/Web Development/JavaScript',
 };
 
