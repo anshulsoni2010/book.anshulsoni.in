@@ -196,12 +196,12 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                     />
                     <h3 className="mb-2 text-center font-semibold">Google Play Books</h3>
                     <div className="flex flex-col gap-2 w-full">
-                    <Button
-                        onClick={() => window.open('https://play.google.com/store/books', '_blank')}
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2"
-                    >
-                        Buy Now
-                    </Button>
+                        <Button
+                            onClick={() => window.open('https://play.google.com/store/books', '_blank')}
+                            className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2"
+                        >
+                            Buy Now
+                        </Button>
                         <p className="text-xs text-blue-600 text-center">Best reading experience across all devices</p>
                     </div>
                 </CardContent>
@@ -230,22 +230,22 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
             </Card>
         </div>
         <div className="grid md:grid-cols-2 gap-4">
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2 text-center">Why Choose Google Books?</h3>
-            <ul className="text-sm text-gray-600 space-y-2">
-                <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Seamless synchronization across all devices
-                </li>
-                <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Enhanced reading features and better code formatting
-                </li>
-                <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Built-in dictionary and note-taking capabilities
-                </li>
-            </ul>
+            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                <h3 className="text-lg font-semibold mb-2 text-center">Why Choose Google Books?</h3>
+                <ul className="text-sm text-gray-600 space-y-2">
+                    <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                        Seamless synchronization across all devices
+                    </li>
+                    <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                        Enhanced reading features and better code formatting
+                    </li>
+                    <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                        Built-in dictionary and note-taking capabilities
+                    </li>
+                </ul>
             </div>
             <div className="mt-6 p-4 bg-gray-50 rounded-lg">
                 <h3 className="text-lg font-semibold mb-2 text-center">Why Choose Amazon Kindle?</h3>
@@ -465,10 +465,10 @@ export default function LandingPage() {
 
 
 
-<PBlurIn
-word="Master the fundamentals of JavaScript through engaging lessons, practical exercises, and real-world projects designed for aspiring developers."
-className="text-xl mb-8 text-gray-600"
-/>
+                                <PBlurIn
+                                    word="Master the fundamentals of JavaScript through engaging lessons, practical exercises, and real-world projects designed for aspiring developers."
+                                    className="text-xl mb-8 text-gray-600"
+                                />
                                 <motion.div
                                     className="space-y-4 md:space-y-0 md:space-x-4"
                                     initial={{ opacity: 0, y: 50 }}
@@ -652,16 +652,18 @@ className="text-xl mb-8 text-gray-600"
                             >
                                 <h3 className="text-2xl font-semibold mb-4">Anshul Soni</h3>
                                 <p className="text-gray-600 mb-4">
-                                    Anshul Soni is a passionate full-stack developer who began coding at the age of 11. With years of experience in web development and a knack for explaining complex concepts in simple terms, Anshul is dedicated to helping aspiring developers master JavaScript and build amazing web applications.
+                                    Anshul Soni, a 14-year-old full-stack developer and UI/UX designer, is the founder of CodeINBlogs, one of the fastest-growing communities for developers. As an author of JavaScript Mastery in 100 Days, he brings a wealth of coding expertise to aspiring developers. Anshul is also an organizer of hackathons, a speaker at DevFest 2023, and has been featured in various news outlets for his work and contributions in tech.
+
+
                                 </p>
                                 <div className="flex items-center space-x-4">
-                                    <Link href="https://twitter.com/anshulsoni2010" className="text-blue-400 hover:text-blue-500 transition-colors">
+                                    <Link href="https://twitter.com/anshulsoni2010" target="_blank" className="text-gray-600 hover:text-gray-800 transition-colors">
                                         <Twitter className="w-6 h-6" />
                                     </Link>
-                                    <Link href="#" className="text-gray-600 hover:text-gray-800 transition-colors">
+                                    <Link href="https://anshulsoni.in" target="_blank" className="text-gray-600 hover:text-gray-800 transition-colors">
                                         <Globe className="w-6 h-6" />
                                     </Link>
-                                    <Link href="#" className="text-gray-600 hover:text-gray-800 transition-colors">
+                                    <Link href="buymeacoffee.com/anshulsoni2010" target="_blank" className="text-gray-600 hover:text-gray-800 transition-colors">
                                         <Coffee className="w-6 h-6" />
                                     </Link>
                                 </div>
@@ -769,7 +771,7 @@ className="text-xl mb-8 text-gray-600"
                                 viewport={{ once: true }}
                             >
                                 <div className="text-4xl font-bold text-pink-500 mb-2">
-                                    <AnimatedCounter target={50} duration={2000} />+
+                                    <AnimatedCounter target={15} duration={2000} />+
                                 </div>
                                 <p className="text-gray-600">Real-world Projects</p>
                             </motion.div>
@@ -794,16 +796,32 @@ className="text-xl mb-8 text-gray-600"
                         <h2 className="text-3xl font-bold mb-6">Subscribe to Our Newsletter</h2>
                         <p className="text-gray-600 mb-4">Stay updated with the latest news and offers!</p>
                         <div className="flex justify-center">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="border border-gray-300 rounded-l-md p-2 w-64"
-                            />
-                            <button
-                                className="bg-orange-500 text-white rounded-r-md p-2 hover:bg-orange-600 transition duration-300"
+                            <form action="https://formcarry.com/s/0mtR_Q253s_"
+                                method="POST"
+                                encType="multipart/form-data"
+                                className="flex flex-col md:flex-row gap-4 items-center"
                             >
-                                Subscribe
-                            </button>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Enter your name"
+                                    required
+                                    className="border border-gray-300 rounded-md md:rounded-r-none p-2 w-64"
+                                />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    required
+                                    className="border border-gray-300 rounded-md md:rounded-none p-2 w-64"
+                                />
+                                <button
+                                    className="bg-orange-500 text-white rounded-md md:rounded-l-none p-2 hover:bg-orange-600 transition duration-300 w-64 md:w-auto"
+                                    type="submit"
+                                >
+                                    Subscribe
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </section>
