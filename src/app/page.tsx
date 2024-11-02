@@ -8,14 +8,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { BookOpen, Code, Users, Twitter, Menu, X, Star, Book, Laptop, Globe, ShoppingCart, Zap, Target, Coffee, Rocket, GraduationCap, Database, CheckCircle } from 'lucide-react';
 import BookCover from "./assets/JS Mastery in 100 Days.png"
-import googlebooksicon from './assets/google-books.png'
-import amazonbooksicon from './assets/amazon-kindle.png'
+import googlebooksicon from './assets/google-books.webp'
+import amazonbooksicon from './assets/amazon-kindle.webp'
 import author from './assets/anshul.png'
 import js from './assets/js.png'
 import BlurIn from '@/components/ui/blur-in'
 import PBlurIn from '@/components/ui/p-blur'
-import DiscountPopup from "@/components/ui/popup"; // Import the DiscountPopup component
-// Define support methods
+import DiscountPopup from "@/components/ui/popup";
 const supportMethods = [
     {
         title: "Share on Social Media",
@@ -182,10 +181,12 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
         exit={{ scale: 0.9, y: 20 }}
         className="bg-white p-8 rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto relative"
     >
-        <h2 className="text-3xl font-bold mb-4 text-center">Choose a Platform</h2>
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <h2 className="text-3xl font-bold mb-4 text-center">Choose Your Platform</h2>
+        <p className="text-center text-gray-600 mb-6">Google Books is our recommended platform for the best reading experience!</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <Card className="hover:shadow-lg hover:shadow-blue-300 transition-shadow shadow-blue-500 bg-blue-50 duration-300">
                 <CardContent className="flex flex-col items-center p-4">
+                    <div className="bg-blue-100 px-3 py-1 rounded-full text-blue-600 text-sm font-medium mb-2">Recommended</div>
                     <Image
                         src={googlebooksicon}
                         alt="Google Play Books"
@@ -193,18 +194,21 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                         height={80}
                         className="mb-2"
                     />
-                    <h3 className="mb-2 text-center font-semibold" >Google Play Books</h3>
+                    <h3 className="mb-2 text-center font-semibold">Google Play Books</h3>
+                    <div className="flex flex-col gap-2 w-full">
                     <Button
                         onClick={() => window.open('https://play.google.com/store/books', '_blank')}
                         className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2"
                     >
                         Buy Now
                     </Button>
+                        <p className="text-xs text-blue-600 text-center">Best reading experience across all devices</p>
+                    </div>
                 </CardContent>
             </Card>
             <Card className="hover:shadow-lg hover:shadow-orange-300 transition-shadow shadow-orange-500 bg-orange-50 duration-300">
                 <CardContent className="flex flex-col items-center p-4">
-                    <span className="w-fit px-6 bg-orange-600 text-white py-2 text-center rounded-md font-bold font-geist">Coming Soon</span>
+                    <div className="bg-orange-100 px-3 py-1 rounded-full text-orange-600 text-sm font-medium mb-2">Available on Kindle</div>
                     <Image
                         src={amazonbooksicon}
                         alt="Amazon Kindle Store"
@@ -213,18 +217,54 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                         className="mb-2"
                     />
                     <h3 className="mb-2 text-center font-semibold">Amazon Kindle Store</h3>
-                    {/* <Button
-                        onClick={() => window.open('https://www.amazon.com/Kindle-eBooks', '_blank')}
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2"
-                    >
-                        Buy Now
-                    </Button> */}
+                    <div className="flex flex-col gap-2 w-full">
+                        <Button
+                            onClick={() => window.open('https://www.amazon.com/Kindle-eBooks', '_blank')}
+                            className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2"
+                        >
+                            Buy Now
+                        </Button>
+                        <p className="text-xs text-orange-600 text-center">Read on your favorite Kindle device</p>
+                    </div>
                 </CardContent>
             </Card>
         </div>
-        <p className="text-center text-gray-600 text-sm">
-            You can purchase from any platform that suits you best. Because, on both platforms prices are same.
-        </p>
+        <div className="grid md:grid-cols-2 gap-4">
+        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+            <h3 className="text-lg font-semibold mb-2 text-center">Why Choose Google Books?</h3>
+            <ul className="text-sm text-gray-600 space-y-2">
+                <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Seamless synchronization across all devices
+                </li>
+                <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Enhanced reading features and better code formatting
+                </li>
+                <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Built-in dictionary and note-taking capabilities
+                </li>
+            </ul>
+            </div>
+            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                <h3 className="text-lg font-semibold mb-2 text-center">Why Choose Amazon Kindle?</h3>
+                <ul className="text-sm text-gray-600 space-y-2">
+                    <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
+                        Read on dedicated Kindle e-readers
+                    </li>
+                    <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
+                        Access through the Kindle app on any device
+                    </li>
+                    <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
+                        Sync progress across all your devices
+                    </li>
+                </ul>
+            </div>
+        </div>
         <button
             className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors"
             onClick={onClose}
