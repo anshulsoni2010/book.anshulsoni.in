@@ -369,9 +369,9 @@ export default function LandingPage() {
             <FloatingParticles />
 
             <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-                <div className="container  px-12  mx-auto  py-4 flex justify-between items-center">
-                    <Link href="/" className="flex items-center space-x-2">
-                        <BookOpen className="w-12 h-12 text-orange-600" />
+                <div className="container px-12 mx-auto py-4 flex justify-between items-center">
+                    <Link href="/" className="flex items-center space-x-2" aria-label="Go to homepage">
+                        <BookOpen className="w-12 h-12 text-orange-600"/>
                     </Link>
                     <nav className="hidden md:flex space-x-6">
                         {['About', 'Content', 'Author'].map((item) => (
