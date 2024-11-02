@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         title: 'JavaScript Mastery in 100 Days',
         description: 'Master JavaScript from scratch with practical projects and exercises. Written by @anshulsoni2010',
         creator: '@anshulsoni2010',
-        images: ['/oster.png'],
+        images: ['/JavaScript-Poster.png'],
     },
     robots: {
         index: true,
