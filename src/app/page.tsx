@@ -374,7 +374,7 @@ export default function LandingPage() {
                         <BookOpen className="w-12 h-12 text-orange-600" />
                     </Link>
                     <nav className="hidden md:flex space-x-6">
-                        {['About', 'Content', 'Author', 'Reviews'].map((item) => (
+                        {['About', 'Content', 'Author'].map((item) => (
                             <Link
                                 key={item}
                                 href={`#${item.toLowerCase()}`}
@@ -419,7 +419,7 @@ export default function LandingPage() {
                             <X className="h-6 w-6" />
                         </button>
                         <nav className="flex flex-col items-center space-y-6">
-                            {['About', 'Content', 'Author', 'Reviews'].map((item) => (
+                            {['About', 'Content', 'Author'].map((item) => (
                                 <Link
                                     key={item}
                                     href={`#${item.toLowerCase()}`}
