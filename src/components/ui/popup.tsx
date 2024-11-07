@@ -1,55 +1,39 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { X, Copy } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { toast } from 'react-toastify';
 
 const DiscountPopup = ({ onClose, onApplyCoupon }: { onClose: () => void; onApplyCoupon: (coupon: { code: string; discount: string }) => void }) => {
   const [selectedCoupon, setSelectedCoupon] = useState<{ code: string; discount: string } | null>(null);
   const [couponApplied, setCouponApplied] = useState(false);
-  const [showShareOptions, setShowShareOptions] = useState(false);
+  const [showRedeemCode, setShowRedeemCode] = useState(false);
 
   const coupons = [
-    { code: 'JSMASTERY20', discount: '20%' },
-    { code: 'EARLYBIRD15', discount: '15%' }
+    { code: 'EARLYBIRD30', discount: '30%', redeemCode: 'PHF96JT527KHF' },
   ];
 
   const handleApplyCoupon = () => {
     if (selectedCoupon) {
       onApplyCoupon(selectedCoupon);
       setCouponApplied(true);
+      setShowRedeemCode(true);
     }
   };
 
-  const handleAvailDiscount = () => {
-    setShowShareOptions(true);
-  };
-
-  const handleShare = (platform: string) => {
-    if (!selectedCoupon) return;
-
-    const message = `Check out this discount code: ${selectedCoupon.code} for ${selectedCoupon.discount} off!`;
-    const url = 'https://jsmastery.com'; // Link to share
-    let shareUrl;
-
-    switch (platform) {
-      case 'whatsapp':
-        shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)} ${encodeURIComponent(url)}`;
-        break;
-      case 'twitter':
-        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)} ${encodeURIComponent(url)}`;
-        break;
-      case 'linkedin':
-        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
-        break;
-      case 'instagram':
-        shareUrl = `https://www.instagram.com/?url=${encodeURIComponent(url)}`; // Instagram doesn't support direct sharing like others
-        break;
-      default:
-        return;
+  const handleCopyRedeemCode = async () => {
+    const redeemCode = coupons[0].redeemCode; // Correctly reference redeemCode
+    if (redeemCode) {
+      try {
+        await navigator.clipboard.writeText(redeemCode);
+        toast.success('Redeem code copied to clipboard!', { theme: 'dark' });
+      } catch (error) {
+        console.error('Failed to copy: ', error);
+        toast.error('Failed to copy redeem code. Please try again.', { theme: 'dark' });
+      }
+    } else {
+      toast.error('No redeem code available to copy.', { theme: 'dark' });
     }
-
-    window.open(shareUrl, '_blank');
   };
 
   return (
@@ -67,12 +51,22 @@ const DiscountPopup = ({ onClose, onApplyCoupon }: { onClose: () => void; onAppl
       </button>
       <h2 className="text-2xl font-bold mb-4 text-center">Special Discount!</h2>
       {couponApplied ? (
-        <div className="flex flex-col items-center">
-          <p className="text-gray-600 mb-4 font-bold text-lg">Your coupon code: <span className="text-green-500">{selectedCoupon?.code}</span></p>
-          <Button onClick={handleAvailDiscount} className="bg-green-500 hover:bg-green-600 text-white mb-2">
-            Avail Discount
-          </Button>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }} // Smooth transition for redeem code
+          className="flex flex-col items-center"
+        >
+       
+          <motion.div className="flex flex-col items-center" onClick={handleCopyRedeemCode}>
+            <p className="text-gray-600 text-center mb-4 font-bold text-lg">Your coupon code: Redeem Code: {coupons[0].redeemCode}</p>
+            <Button className="bg-green-500 hover:bg-green-600 text-white mb-2 flex items-center">
+              <Copy className="w-4 h-4 mr-2" /> {/* Copy icon added */}
+              Copy Redeem Code
+            </Button>
+          </motion.div>
+        </motion.div>
       ) : (
         <div className="space-y-4">
           {coupons.map((coupon) => (
@@ -87,25 +81,6 @@ const DiscountPopup = ({ onClose, onApplyCoupon }: { onClose: () => void; onAppl
               <p className="text-sm text-gray-600">Discount: {coupon.discount}</p>
             </motion.div>
           ))}
-        </div>
-      )}
-      {showShareOptions && (
-        <div className="flex flex-col items-center mt-4">
-          <p className="text-gray-600 mb-4">Share this discount on your socials!</p>
-          <div className="flex flex-col space-y-2">
-            <Button onClick={() => handleShare('whatsapp')} className="bg-green-500 hover:bg-green-600 text-white">
-              Share on WhatsApp
-            </Button>
-            <Button onClick={() => handleShare('twitter')} className="bg-blue-400 hover:bg-blue-500 text-white">
-              Share on Twitter
-            </Button>
-            <Button onClick={() => handleShare('linkedin')} className="bg-blue-700 hover:bg-blue-800 text-white">
-              Share on LinkedIn
-            </Button>
-            <Button onClick={() => handleShare('instagram')} className="bg-pink-500 hover:bg-pink-600 text-white">
-              Share on Instagram
-            </Button>
-          </div>
         </div>
       )}
       <div className="mt-6 flex justify-end space-x-4">
