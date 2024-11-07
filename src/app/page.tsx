@@ -197,7 +197,7 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                     <h3 className="mb-2 text-center font-semibold">Google Play Books</h3>
                     <div className="flex flex-col gap-2 w-full">
                         <Button
-                            onClick={() => window.open('https://play.google.com/store/books', '_blank')}
+                            onClick={() => window.open('https://play.google.com/store/books/details?id=9JksEQAAQBAJ', '_blank')}
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2"
                         >
                             Buy Now
@@ -219,7 +219,7 @@ const GetYourCopyPopup = ({ onClose }: { onClose: () => void }) => (
                     <h3 className="mb-2 text-center font-semibold">Amazon Kindle Store</h3>
                     <div className="flex flex-col gap-2 w-full">
                         <Button
-                            onClick={() => window.open('https://www.amazon.com/Kindle-eBooks', '_blank')}
+                            onClick={() => window.open('https://amzn.in/d/g4EaFJT', '_blank')}
                             className="w-full bg-orange-600 hover:bg-orange-700 text-white py-2"
                         >
                             Buy Now
